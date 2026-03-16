@@ -1,73 +1,101 @@
-# React + TypeScript + Vite
+# Metrónomo Lite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern web-based metronome built with React, TypeScript, and the Web Audio API.
 
-Currently, two official plugins are available:
+🔗 **Live Demo:** [https://metronome-lite.netlify.app](https://metronome-lite.netlify.app)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- ✅ Adjustable tempo (40-240 BPM)
+- ✅ Multiple time signatures (2/4, 3/4, 4/4)
+- ✅ Visual beat indicators
+- ✅ Tap tempo functionality
+- ✅ Accent on first beat
+- ✅ Real-time tempo changes while playing
+- ✅ Precise timing using Web Audio API
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+- **React 18** - UI framework
+- **TypeScript** - Type safety
+- **Vite** - Build tool
+- **Tailwind CSS** - Styling
+- **Web Audio API** - High-precision audio timing
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Getting Started
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Prerequisites
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- Node.js 16+ and npm
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/TU_USUARIO/metronome-app.git
+
+# Navigate to project directory
+cd metronome-app
+
+# Install dependencies
+npm install
+
+# Run development server
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+The app will be available at `http://localhost:5173`
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Build for Production
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run build
 ```
+
+## Project Structure
+
+```
+metronome-app/
+├── src/
+│   ├── components/        # React components
+│   │   ├── MetronomeDisplay.tsx
+│   │   ├── TimeSignature.tsx
+│   │   ├── TempoControls.tsx
+│   │   ├── TapTempo.tsx
+│   │   └── PlayControls.tsx
+│   ├── hooks/            # Custom React hooks
+│   │   └── useMetronome.ts
+│   ├── utils/            # Utility functions
+│   │   ├── audioEngine.ts
+│   │   └── timeSignatures.ts
+│   └── App.tsx           # Main app component
+├── public/
+└── package.json
+```
+
+## How It Works
+
+The metronome uses a **scheduler-based approach** with the Web Audio API to ensure precise timing:
+
+1. A scheduler runs every 25ms checking if notes need to be scheduled
+2. Notes are programmed ahead using `AudioContext.currentTime`
+3. This eliminates the timing drift common with `setInterval`
+4. The approach is based on [Chris Wilson's guide](https://web.dev/audio-scheduling/)
+
+## Future Enhancements
+
+- [ ] Custom time signature builder
+- [ ] Subdivision options (eighth notes, triplets)
+- [ ] Preset tempo names (Largo, Allegro, etc.)
+- [ ] Dark mode
+- [ ] Keyboard shortcuts
+
+## Author
+
+**Pedro Vercesi**
+
+- Orchestral conductor transitioning to web development
+
+## License
+
+MIT License - feel free to use this project for learning or inspiration.
