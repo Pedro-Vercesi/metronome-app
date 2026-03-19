@@ -2,27 +2,45 @@ interface Props {
   bpm: number;
   currentBeat: number;
   beats: number;
+  className?: string;
 }
 
-export const MetronomeDisplay = ({ bpm, currentBeat, beats }: Props) => {
-  const beatsArray = Array(beats)
-    .fill(0)
-    .map((_, i) => i + 1);
+export const MetronomeDisplay = ({
+  bpm,
+  currentBeat,
+  beats,
+  className,
+}: Props) => {
+  const beatsArray = Array.from({ length: beats }, (_, i) => i + 1);
 
   return (
-    <div className="flex flex-col items-center">
-      <p className="text-sm text-gray-800">TEMPO</p>
-      <p className="text-7xl text-gray-950">{bpm}</p>
-      <p className="text-sm text-gray-800 mb-6">{bpm}</p>
+    <div className={`flex flex-col items-center ${className}`}>
+      {/* Label TEMPO */}
+      <p className="text-xs text-muted-text tracking-widest uppercase mb-2">
+        Tempo
+      </p>
 
-      <div className="flex gap-3 justify-center">
+      {/* BPM Display - Número grande con glow */}
+      <div className="relative mb-2">
+        <p className="text-8xl font-bold text-neon-cyan drop-shadow-[0_0_30px_rgba(0,217,255,0.8)]">
+          {bpm}
+        </p>
+      </div>
+
+      {/* Label BPM */}
+      <p className="text-sm text-muted-text tracking-wider mb-8">BPM</p>
+
+      {/* Círculos de beat con efecto neón */}
+      <div className="flex gap-4">
         {beatsArray.map((beatNumber) => (
           <div
             key={beatNumber}
-            className={`w-4 h-4 rounded-full ${
-              beatNumber === currentBeat ? "bg-blue-500" : "bg-gray-300"
+            className={`w-5 h-5 rounded-full transition-all duration-100 ${
+              beatNumber === currentBeat
+                ? "bg-neon-magenta shadow-neon-magenta scale-125"
+                : "bg-dark-bg border-2 border-muted-text/30"
             }`}
-          ></div>
+          />
         ))}
       </div>
     </div>

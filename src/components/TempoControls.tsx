@@ -6,8 +6,9 @@ interface Props {
 export const TempoControls = ({ bpm, onChange }: Props) => {
   return (
     <div className="mb-6">
-      <div className="mb-4">
-        <label className="block text-sm text-gray-600 mb-2">
+      {/* Slider */}
+      <div className="mb-6">
+        <label className="block text-xs text-muted-text tracking-widest uppercase mb-3">
           Ajustar tempo (40-240 BPM)
         </label>
         <input
@@ -16,9 +17,14 @@ export const TempoControls = ({ bpm, onChange }: Props) => {
           max="240"
           value={bpm}
           onChange={(e) => onChange(Number(e.target.value))}
-          className="w-full h-3 bg-gray-200 rounded-lg accent-blue-500"
+          className="w-full h-2 bg-dark-bg rounded-lg appearance-none cursor-pointer
+                     [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 
+                     [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-neon-cyan 
+                     [&::-webkit-slider-thumb]:shadow-neon-cyan [&::-webkit-slider-thumb]:cursor-pointer
+                     [&::-moz-range-thumb]:w-5 [&::-moz-range-thumb]:h-5 [&::-moz-range-thumb]:rounded-full 
+                     [&::-moz-range-thumb]:bg-neon-cyan [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:cursor-pointer"
         />
-        <div className="flex justify-between text-sm text-gray-500 mt-1">
+        <div className="flex justify-between text-xs text-muted-text mt-2">
           <span>40</span>
           <span>240</span>
         </div>
@@ -26,7 +32,7 @@ export const TempoControls = ({ bpm, onChange }: Props) => {
 
       {/* Input Manual */}
       <div>
-        <label className="block text-sm text-gray-600 mb-2">
+        <label className="block text-xs text-muted-text tracking-widest uppercase mb-3">
           Entrada manual
         </label>
         <input
@@ -35,7 +41,10 @@ export const TempoControls = ({ bpm, onChange }: Props) => {
           max="240"
           value={bpm}
           onChange={(e) => onChange(Number(e.target.value))}
-          className="w-full py-3 px-4 border-2 border-gray-300 rounded-lg text-center text-xl font-semibold"
+          className="w-full py-3 px-4 bg-dark-bg border-2 border-neon-cyan/30 rounded-lg 
+                     text-center text-2xl font-bold text-light-text
+                     focus:outline-none focus:border-neon-cyan focus:shadow-neon-cyan
+                     transition-all duration-200"
         />
       </div>
     </div>

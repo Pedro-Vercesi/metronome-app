@@ -1,101 +1,63 @@
-# Metrónomo Lite
+# 🎵 Metronome Lite
 
-A modern web-based metronome built with React, TypeScript, and the Web Audio API.
+A modern, web-based metronome built with React, TypeScript, and Web Audio API. Features precise timing, customizable time signatures, and a retro synthwave aesthetic.
 
-🔗 **Live Demo:** [https://metronome-lite.netlify.app](https://metronome-lite.netlify.app)
+## 🚀 Live Demo
 
-## Features
+[View Live App](https://metronome-lite.netlify.app)
 
-- ✅ Adjustable tempo (40-240 BPM)
-- ✅ Multiple time signatures (2/4, 3/4, 4/4)
-- ✅ Visual beat indicators
-- ✅ Tap tempo functionality
-- ✅ Accent on first beat
-- ✅ Real-time tempo changes while playing
-- ✅ Precise timing using Web Audio API
+## 📸 Preview
 
-## Tech Stack
+![Metronome Screenshot](./screenshots/metronome-preview.png)
 
-- **React 18** - UI framework
+## ✨ Features
+
+- **Precise Timing**: Custom scheduler using Web Audio API for drift-free playback
+- **Time Signatures**: Support for 2/4, 3/4, 4/4 with dynamic beat indicators
+- **Tap Tempo**: Calculate BPM by tapping rhythm
+- **Real-time Controls**: Adjust tempo on-the-fly while playing
+- **Retro Synthwave UI**: Dark mode with neon accents and glow effects
+
+## 🛠️ Tech Stack
+
+- **React** - Component-based UI
 - **TypeScript** - Type safety
-- **Vite** - Build tool
-- **Tailwind CSS** - Styling
-- **Web Audio API** - High-precision audio timing
+- **Tailwind CSS v4** - Styling with custom CSS variables
+- **Web Audio API** - High-precision audio synthesis
+- **Vite** - Fast build tool
 
-## Getting Started
+## 🏗️ Architecture
 
-### Prerequisites
+- **Custom Hook** (`useMetronome`) - Encapsulates timing logic
+- **Modular Components** - Separated UI concerns
+- **Scheduler Pattern** - Prevents timing drift with lookahead scheduling
+- **State Management** - Lifting state up pattern
 
-- Node.js 16+ and npm
-
-### Installation
+## 🚀 Getting Started
 
 ```bash
-# Clone the repository
-git clone https://github.com/TU_USUARIO/metronome-app.git
-
-# Navigate to project directory
-cd metronome-app
-
 # Install dependencies
 npm install
 
 # Run development server
 npm run dev
-```
 
-The app will be available at `http://localhost:5173`
-
-### Build for Production
-
-```bash
+# Build for production
 npm run build
 ```
 
-## Project Structure
+## 📝 What I Learned
 
-```
-metronome-app/
-├── src/
-│   ├── components/        # React components
-│   │   ├── MetronomeDisplay.tsx
-│   │   ├── TimeSignature.tsx
-│   │   ├── TempoControls.tsx
-│   │   ├── TapTempo.tsx
-│   │   └── PlayControls.tsx
-│   ├── hooks/            # Custom React hooks
-│   │   └── useMetronome.ts
-│   ├── utils/            # Utility functions
-│   │   ├── audioEngine.ts
-│   │   └── timeSignatures.ts
-│   └── App.tsx           # Main app component
-├── public/
-└── package.json
-```
+- Implementing precise timing with Web Audio API scheduler
+- Building reusable React components with TypeScript
+- Creating custom hooks for complex stateful logic
+- Managing ref-based state for performance optimization
+- Tailwind v4 theming with CSS variables
 
-## How It Works
+## 👨‍💻 Author
 
-The metronome uses a **scheduler-based approach** with the Web Audio API to ensure precise timing:
+Pedro Vercesi
 
-1. A scheduler runs every 25ms checking if notes need to be scheduled
-2. Notes are programmed ahead using `AudioContext.currentTime`
-3. This eliminates the timing drift common with `setInterval`
-4. The approach is based on [Chris Wilson's guide](https://web.dev/audio-scheduling/)
+---
 
-## Future Enhancements
-
-- [ ] Custom time signature builder
-- [ ] Subdivision options (eighth notes, triplets)
-- [ ] Preset tempo names (Largo, Allegro, etc.)
-- [ ] Dark mode
-- [ ] Keyboard shortcuts
-
-## Author
-
-**Pedro Vercesi**
-
-- Orchestral conductor transitioning to web development
-
-## License
-
-MIT License - feel free to use this project for learning or inspiration.
+**Note:** This is an educational project built for portfolio purposes.

@@ -1,1 +1,21 @@
 @import "tailwindcss";
+
+@theme {
+  /* Colores custom */
+  --color-dark-bg: #0a0e27;
+  --color-dark-card: #151932;
+  --color-light-text: #e0e7ff;
+  --color-muted-text: #8b92c7;
+
+  --color-neon-cyan: #00d9ff;
+  --color-neon-magenta: #ff007a;
+  --color-neon-purple: #9d4edd;
+  --color-neon-green: #00ff88;
+  --color-neon-red: #ff2a6d;
+
+  /* Box shadows custom */
+  --shadow-neon-cyan: 0 0 20px rgb(0 217 255 / 0.5);
+  --shadow-neon-magenta: 0 0 20px rgb(255 0 122 / 0.5);
+  --shadow-neon-green: 0 0 20px rgb(0 255 136 / 0.5);
+  --shadow-neon-red: 0 0 20px rgb(255 42 109 / 0.5);
+}
