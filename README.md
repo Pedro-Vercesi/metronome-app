@@ -8,7 +8,7 @@ A modern, web-based metronome built with React, TypeScript, and Web Audio API. F
 
 ## 📸 Preview
 
-![Metronome Screenshot](./screenshots/metronome-preview.png)
+![Metronome Screenshot](./public/screenshots/metronome-preview.png))
 
 ## ✨ Features
 
